@@ -1,0 +1,13 @@
+includes:
+    - vendor/odinns/coding-style/config/phpstan.neon
+    - vendor/odinns/phpstan-pest-this/extension.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    pestClosureThisTypeMap:
+        -
+            pathContains: '/tests/'
+            class: Volven\Pest\Tests\TestCase

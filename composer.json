@@ -1,0 +1,73 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "odinns/volven-pest-plugin",
+    "description": "Deterministic Vølven technical-debt budgets for Pest.",
+    "keywords": [
+        "debt",
+        "pest",
+        "phpstan",
+        "ratchet",
+        "volven"
+    ],
+    "homepage": "https://github.com/odinns/volven-pest-plugin",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Odinn"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/odinns/volven-pest-plugin/issues",
+        "source": "https://github.com/odinns/volven-pest-plugin"
+    },
+    "require": {
+        "php": "^8.4",
+        "pestphp/pest-plugin": "^4.0"
+    },
+    "require-dev": {
+        "odinns/coding-style": "^1.0.1",
+        "odinns/phpstan-pest-this": "^1.0",
+        "pestphp/pest": "^4.4",
+        "phpstan/phpstan": "^2.1",
+        "rector/rector": "^2.2"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ],
+        "psr-4": {
+            "Volven\\Pest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Volven\\Pest\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "pest": {
+            "plugins": [
+                "Volven\\Pest\\Plugin"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test:types": "phpstan analyse",
+        "test:refactor": "rector process --dry-run",
+        "test:all": [
+            "@test",
+            "@test:types",
+            "@test:refactor"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
